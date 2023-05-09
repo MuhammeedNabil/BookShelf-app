@@ -1,0 +1,48 @@
+.app {
+    background: white;
+  }
+
+
+/* main page */
+
+.listBooksTitle {
+  padding: 10px 0;
+  background: rgb(47, 47, 167);
+  text-align: center;
+}
+.listBooksTitle h1 {
+  font-weight: 400;
+  margin: 0;
+  color: white;
+}
+
+.listBooksContent {
+  padding: 0 0 80px;
+  flex: 1;
+}
+
+
+
+
+/* Search Icon */
+.openSearch {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+}
+.openSearch a {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgb(48, 48, 152);
+  background-image: url("../icons/add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 0;
+}
+
+
+

@@ -1,0 +1,57 @@
+
+
+  
+  .book {
+    width: 140px;
+  }
+  .bookTitle,
+  .bookAuthors {
+    font-size: 0.8em;
+  }
+  .bookTitle {
+    margin-top: 10px;
+  }
+  .bookAuthors {
+    color: #999;
+  }
+  
+  .bookTop {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .bookShelfChanger {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(48, 48, 152)  ;
+    background-image: url("../../UI/icons/arrow-drop-down.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+  .bookShelfChanger select {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* book cover */
+  
+  .bookCover {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background: #eee;
+  }
+  .bookCoverTitle {
+    padding: 20px 10px 0;
+    text-align: center;
+    font-size: 0.8em;
+  }
+  
