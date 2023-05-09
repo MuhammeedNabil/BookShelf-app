@@ -45,38 +45,3 @@ describe("Routing from home to login page", () => {
     await screen.findByTestId("searchInput");
   });
 });
-
-// describe('Searching for my reading word',  () => {
-//   test.only('my Reading', async ()=>{
-//     render(<Home/>)
-//     await screen.findByTestId("homeTitle");
-
-//     // const readingElments = screen.getByTestId('homeTitle')
-//     // expect(readingElments.innerHTML).toHaveTextContent('MyReads')
-//   })
-// })
-
-
-
-describe('fetch fuction and display on shelf', ()=>{
-  // test('render getAll Books', async () => {
-  // const mockResponce: book={
-  //     status:200,
-  //     headers:'connect',
-  //     ok: true,
-  //     redirected: true,
-  //     statusText: '',
-  //     json: () => Promise.resolve({id:1,title:'Book 1'})
-  //   }
-  //   jest.spyOn(global,'fetch').mockResolvedValue({
-  //     json: jest.fn().mockResolvedValue(mockResponce),
-  //   });
-  //   render(<Shelf />);
-  //   const bookItems = await screen.findAllByRole('listitem');
-  //     expect(bookItems).toHaveLength(3);
-
-  //     expect(bookItems[0]).toHaveTextContent('Book 1');
-  //       global.fetch.mockRestore();
-  // });
-
-});

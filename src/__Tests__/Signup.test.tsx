@@ -18,7 +18,7 @@ function wrapper({ children }: PropsWithChildren<unknown>) {
 }
 
 describe("Routing from register to login page", () => {
-  test("signup Route", async () => {
+  it("signup Route", async () => {
     render(
       <Routes>
         <Route path="/signup" element={<SignUp />} />

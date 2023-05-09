@@ -21,6 +21,7 @@ console.log(book)
             height: 193,
             backgroundImage: `url(${book?.imageLinks.smallThumbnail})`,  
           }}
+          data-testid='imgURL'
         ></div>
         <div className={`${styles.bookShelfChanger}`}>
           <select defaultValue={book?.status ? book?.status : "none"} onChange={(e) => bookShelfHandler(book, e.target.value)}>
@@ -34,8 +35,8 @@ console.log(book)
           </select>
         </div>
       </div>
-      <div className={`${styles.bookTitle}`}>{book?.title}</div>
-      <div className={`${styles.bookAuthors}`}>{book?.authors}</div>
+      <div className={`${styles.bookTitle}`} data-testid='bookTitle'>{book?.title}</div>
+      <div className={`${styles.bookAuthors}`} data-testid='bookAuthors'>{book?.authors}</div>
     </div>
   );
 };

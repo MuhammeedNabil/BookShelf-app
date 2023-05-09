@@ -19,7 +19,7 @@ function wrapper({ children }: PropsWithChildren<unknown>) {
 }
 
 describe("Routing from login to sginup and home pages", () => {
-  test("sginup Route", async () => {
+  it("sginup Route", async () => {
     render(
       <Routes>
         <Route path="/login" element={<LogInPage />} />
@@ -31,7 +31,7 @@ describe("Routing from login to sginup and home pages", () => {
     await screen.findByText("Register");
   });
 
-  test("home Route", async () => {
+  it("home Route", async () => {
     render(
       <Routes>
         <Route path="/" element={<Home />} />
