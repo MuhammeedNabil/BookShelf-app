@@ -15,13 +15,7 @@ interface sendBookContext {
 export const IntialData = React.createContext<sendBookContext>({
     books: [],
     setBooks:([]) =>{},
-    //   bookShelfHandler: (book: bookData, whichShelf: string) => {},
-    });
-    
-    // export const BookContext = () => useContext(IntialData);
-
-
-
+    });    
 
       
       
@@ -31,12 +25,6 @@ export const IntialData = React.createContext<sendBookContext>({
     const contextValues = {
         books,
         setBooks,
-        // sections: [
-        //   { sectionName: "currentlyReading", books: currentlyReading },
-        //   { sectionName: "wantToRead", books: wantToRead },
-        //   { sectionName: "read", books: read },
-        // ],
-        // bookShelfHandler: bookShelfHandler,
       };
   return (
     <IntialData.Provider value={contextValues}>

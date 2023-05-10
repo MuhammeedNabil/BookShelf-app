@@ -33,20 +33,15 @@ describe("Routing from Search to Home page", () => {
 });
 
 
-
-// ----------------------------------GOT AN ERROR-----------------------
-
-// TypeError: Cannot destructure property 'basename' of 'React__namespace.useContext(...)' as it is null.
-
-// {
-    // the below test is faild and it give me the above Error I need to test the search Input and I don't use contextin the search componant at all I'm trying to search and found all solutions related to using the context 
-// }
-
-// describe.only("test search Input", () => {
-//   it("searchInput should update query", () => {
-//     render(<SearchPage />);
-//     const searchInput = screen.getByTestId('searchInput') as HTMLInputElement;
-//     fireEvent.change(searchInput, { target: { value: "React" } });
-//     expect(searchInput.value).toBe("React");
-//   });
-// });
+describe("test search Input", () => {
+  it("searchInput should update query", () => {
+    render(
+      <MemoryRouter>
+      <SearchPage />
+    </MemoryRouter>
+      );
+    const searchInput = screen.getByTestId('searchInput') as HTMLInputElement;
+    fireEvent.change(searchInput, { target: { value: "React" } });
+    expect(searchInput.value).toBe("React");
+  });
+});

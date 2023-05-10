@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Shelf from "../../BookData/Shelf/Shelf";
 import * as booksAPI from "../../../BooksAPI";
 
-
 // Bouns Components Import
 import Button from "../../Custom Components/Button/Button";
 import Card from "../../Custom Components/Card/Card";
@@ -22,23 +21,8 @@ export interface section {
   books: bookData[];
 }
 
-// interface sendBookContext {
-//   sections?: section[];
-//   book?:bookData;
-//   bookShelfHandler?: (book: bookData, whichShelf: string) => void;
-// }
-
-// export const IntialData = React.createContext<sendBookContext>({
-//   sections: [],
-//   // bookid:0,
-//   bookShelfHandler: (book: bookData, whichShelf: string) => {},
-// });
-
-// export const BookContext = () => useContext(IntialData);
-
 const Home = () => {
-
-  const {setBooks, books} = useContext(IntialData)
+  const { setBooks, books } = useContext(IntialData);
   // const [books, setBooks] = useState<bookData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -47,22 +31,7 @@ const Home = () => {
     setIsLoading(false);
   }, []);
 
-  // // ---------------------Handler function to update the shelf of the book-------------------
-  // const bookShelfHandler = (book: bookData, whichShelf: string) => {
-  //   const updatedBooks: bookData[] = books.map((b: bookData) => {
-  //     if (b.id === book.id) {
-  //       book.shelf = whichShelf;
-  //       return book;
-  //     }
-  //     return b;
-  //   });
-  //   setBooks(updatedBooks);
-  //   booksAPI.update(book, whichShelf).then((data) => data);
-  // };
-  // // ------------------------------------------------------------------------------------ //
-
   // --------------------------Filter the books on thier shelf----------------------------
-
   const currentlyReading = books.filter(
     (book: bookData) => book.shelf === "currentlyReading"
   );
@@ -72,13 +41,11 @@ const Home = () => {
   const read = books.filter((book: bookData) => book.shelf === "read");
   // ------------------------------------------------------------------------------------ //
 
-
-    const sections =  [
-      { sectionName: "currentlyReading", books: currentlyReading },
-      { sectionName: "wantToRead", books: wantToRead },
-      { sectionName: "read", books: read },
-    ]
-
+  const sections = [
+    { sectionName: "currentlyReading", books: currentlyReading },
+    { sectionName: "wantToRead", books: wantToRead },
+    { sectionName: "read", books: read },
+  ];
 
   return (
     <div className={`${styles.app}`}>
@@ -97,10 +64,7 @@ const Home = () => {
         </div>
         {!isLoading ? (
           <div className={`${styles.listBooksContent}`}>
-
-                <Shelf sections={sections}/>
-
-
+            <Shelf sections={sections} />
           </div>
         ) : (
           <Card>

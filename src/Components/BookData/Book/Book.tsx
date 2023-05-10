@@ -1,20 +1,15 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import styles from "./Book.module.css";
 import { IntialData } from "../../../Store/Context";
-import { bookData } from '../../UI/Home/Home'
+import { bookData } from "../../UI/Home/Home";
 import * as booksAPI from "../../../BooksAPI";
-
- 
 
 interface data {
   book?: any;
-  bookShelfHandler?:any;
+  bookShelfHandler?: any;
 }
 
-
-
 const Book = ({ book }: data) => {
-
   const { books, setBooks } = useContext(IntialData);
 
   // ---------------------Handler function to update the shelf of the book-------------------
@@ -31,7 +26,7 @@ const Book = ({ book }: data) => {
   };
   // ------------------------------------------------------------------------------------ //
 
-console.log(book)
+  console.log(book);
   return (
     <div className={`${styles.book}`}>
       <div className={`${styles.bookTop}`}>
@@ -40,12 +35,17 @@ console.log(book)
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${book?.imageLinks.smallThumbnail})`,  
+            backgroundImage: `url(${
+              book.imageLinks ? book.imageLinks.smallThumbnail : ""
+            })`,
           }}
-          data-testid='imgURL'
+          data-testid="imgURL"
         ></div>
         <div className={`${styles.bookShelfChanger}`}>
-          <select defaultValue={book?.status ? book?.status : "none"} onChange={(e) => bookShelfHandler(book, e.target.value)}>
+          <select
+            defaultValue={book?.status ? book?.status : "none"}
+            onChange={(e) => bookShelfHandler(book, e.target.value)}
+          >
             <option value="none" disabled>
               Move to...
             </option>
@@ -56,8 +56,12 @@ console.log(book)
           </select>
         </div>
       </div>
-      <div className={`${styles.bookTitle}`} data-testid='bookTitle'>{book?.title}</div>
-      <div className={`${styles.bookAuthors}`} data-testid='bookAuthors'>{book?.authors}</div>
+      <div className={`${styles.bookTitle}`} data-testid="bookTitle">
+        {book?.title}
+      </div>
+      <div className={`${styles.bookAuthors}`} data-testid="bookAuthors">
+        {book?.authors}
+      </div>
     </div>
   );
 };
