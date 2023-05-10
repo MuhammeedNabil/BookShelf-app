@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import Shelf from "../../BookData/Shelf/Shelf";
 import * as booksAPI from "../../../BooksAPI";
 
+
 // Bouns Components Import
 import Button from "../../Custom Components/Button/Button";
 import Card from "../../Custom Components/Card/Card";
+import { IntialData } from "../../../Store/Context";
 
 export interface bookData {
   title?: string;
@@ -20,22 +22,24 @@ export interface section {
   books: bookData[];
 }
 
-interface sendBookContext {
-  sections?: section[];
-  book?:bookData;
-  bookShelfHandler?: (book: bookData, whichShelf: string) => void;
-}
+// interface sendBookContext {
+//   sections?: section[];
+//   book?:bookData;
+//   bookShelfHandler?: (book: bookData, whichShelf: string) => void;
+// }
 
-export const IntialData = React.createContext<sendBookContext>({
-  sections: [],
-  // bookid:0,
-  bookShelfHandler: (book: bookData, whichShelf: string) => {},
-});
+// export const IntialData = React.createContext<sendBookContext>({
+//   sections: [],
+//   // bookid:0,
+//   bookShelfHandler: (book: bookData, whichShelf: string) => {},
+// });
 
-export const BookContext = () => useContext(IntialData);
+// export const BookContext = () => useContext(IntialData);
 
 const Home = () => {
-  const [books, setBooks] = useState<bookData[]>([]);
+
+  const {setBooks, books} = useContext(IntialData)
+  // const [books, setBooks] = useState<bookData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -43,19 +47,19 @@ const Home = () => {
     setIsLoading(false);
   }, []);
 
-  // ---------------------Handler function to update the shelf of the book-------------------
-  const bookShelfHandler = (book: bookData, whichShelf: string) => {
-    const updatedBooks: bookData[] = books.map((b: bookData) => {
-      if (b.id === book.id) {
-        book.shelf = whichShelf;
-        return book;
-      }
-      return b;
-    });
-    setBooks(updatedBooks);
-    booksAPI.update(book, whichShelf).then((data) => data);
-  };
-  // ------------------------------------------------------------------------------------ //
+  // // ---------------------Handler function to update the shelf of the book-------------------
+  // const bookShelfHandler = (book: bookData, whichShelf: string) => {
+  //   const updatedBooks: bookData[] = books.map((b: bookData) => {
+  //     if (b.id === book.id) {
+  //       book.shelf = whichShelf;
+  //       return book;
+  //     }
+  //     return b;
+  //   });
+  //   setBooks(updatedBooks);
+  //   booksAPI.update(book, whichShelf).then((data) => data);
+  // };
+  // // ------------------------------------------------------------------------------------ //
 
   // --------------------------Filter the books on thier shelf----------------------------
 
@@ -68,14 +72,13 @@ const Home = () => {
   const read = books.filter((book: bookData) => book.shelf === "read");
   // ------------------------------------------------------------------------------------ //
 
-  const contextValues = {
-    sections: [
+
+    const sections =  [
       { sectionName: "currentlyReading", books: currentlyReading },
       { sectionName: "wantToRead", books: wantToRead },
       { sectionName: "read", books: read },
-    ],
-    bookShelfHandler: bookShelfHandler,
-  };
+    ]
+
 
   return (
     <div className={`${styles.app}`}>
@@ -94,10 +97,10 @@ const Home = () => {
         </div>
         {!isLoading ? (
           <div className={`${styles.listBooksContent}`}>
-            <IntialData.Provider value={contextValues}>
-                <Shelf />
 
-            </IntialData.Provider>
+                <Shelf sections={sections}/>
+
+
           </div>
         ) : (
           <Card>

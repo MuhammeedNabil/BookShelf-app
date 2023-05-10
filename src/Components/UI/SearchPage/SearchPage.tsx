@@ -61,6 +61,7 @@ const SearchPage = () => {
           {foundedBooks.map((b: bookData) => (
             <li key={b.id}>
               <Book book={b} bookShelfHandler={bookShelfHandler} />
+              {/* <Book book={b} /> */}
             </li>
           ))}
         </ol>

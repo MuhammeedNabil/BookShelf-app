@@ -1,6 +1,9 @@
 import styles from "./Shelf.module.css";
 import Book from "../Book/Book";
-import { section, BookContext, bookData, IntialData } from "../../UI/Home/Home";
+import { section, bookData } from "../../UI/Home/Home";
+import { IntialData } from "../../../Store/Context";
+import { useContext } from "react";
+
 
 interface data {
   sections?: section[];
@@ -8,8 +11,9 @@ interface data {
   book?: bookData;
 }
 
-const Shelf = () => {
-  const { sections, bookShelfHandler }: data = BookContext();
+const Shelf = ({sections}:data) => {
+  // const { books } = useContext(IntialData);
+  const { bookShelfHandler }: data = useContext(IntialData);
   return (
     <div className={`${styles.bookshelf}`}>
       {sections?.map((section) => (
@@ -21,15 +25,15 @@ const Shelf = () => {
             <ol className={`${styles.booksGrid}`}>
               {(section.books && section.books.length) ?
               section.books.map((b: bookData) => (
-                <IntialData.Provider value={
+                // <IntialData.Provider value={
            
-                {  book:b}
-                }>
+                // { book:b}
+                // }>
                 <li key={b.id}>
                   <Book book={b} bookShelfHandler={bookShelfHandler} />
                 </li>
 
-                </IntialData.Provider>
+                // </IntialData.Provider>
               )): <span>There are no books added yet.</span>}
             </ol>
           </div>

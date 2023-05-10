@@ -1,14 +1,35 @@
-import React from "react";
+import React, {useContext} from "react";
 import styles from "./Book.module.css";
+import { IntialData } from "../../../Store/Context";
+import { bookData } from '../../UI/Home/Home'
+import * as booksAPI from "../../../BooksAPI";
 
-
+ 
 
 interface data {
   book?: any;
   bookShelfHandler?:any;
 }
 
-const Book = ({ book, bookShelfHandler }: data) => {
+
+
+const Book = ({ book }: data) => {
+
+  const { books, setBooks } = useContext(IntialData);
+
+  // ---------------------Handler function to update the shelf of the book-------------------
+  const bookShelfHandler = (book: bookData, whichShelf: string) => {
+    const updatedBooks: bookData[] = books.map((b: bookData) => {
+      if (b.id === book.id) {
+        book.shelf = whichShelf;
+        return book;
+      }
+      return b;
+    });
+    setBooks(updatedBooks);
+    booksAPI.update(book, whichShelf).then((data) => data);
+  };
+  // ------------------------------------------------------------------------------------ //
 
 console.log(book)
   return (
