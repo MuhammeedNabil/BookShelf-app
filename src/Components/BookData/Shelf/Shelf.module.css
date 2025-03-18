@@ -10,9 +10,13 @@
 
 .bookshelfTitle {
   border-bottom: 1px solid #dedede;
-  padding-bottom: 15px;
-  padding-top: 15px;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  color: #2d3748;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
+
 .bookshelfBooks {
   text-align: center;
 }
@@ -24,12 +28,32 @@
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
 }
+
 .booksGrid li {
-  padding: 10px 15px;
+  padding: 0;
   text-align: left;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .bookshelf {
+    padding: 0 5px 15px;
+  }
+
+  .bookshelfTitle {
+    font-size: 1.1rem;
+    padding: 12px 0;
+    margin-bottom: 15px;
+  }
+
+  .booksGrid {
+    gap: 20px;
+  }
 }
 
 

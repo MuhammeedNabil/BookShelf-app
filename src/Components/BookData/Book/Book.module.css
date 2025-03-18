@@ -1,57 +1,144 @@
+.book {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  width: 200px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+}
 
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
 
-  
+.bookTop {
+  position: relative;
+  width: 160px;
+  height: 240px;
+  margin: 0 auto 15px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bookCover {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.book:hover .bookCover {
+  transform: scale(1.05);
+}
+
+.bookShelfChanger {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4299e1, #3182ce);
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.bookShelfChanger:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+}
+
+.bookShelfChanger select {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+}
+
+.bookShelfChanger::after {
+  content: '↓';
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.bookTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 0 0 8px;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 2.8em;
+  text-align: center;
+}
+
+.bookAuthors {
+  font-size: 0.9rem;
+  color: #718096;
+  line-height: 1.4;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 2.8em;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
   .book {
-    width: 140px;
+    width: 160px;
+    height: 300px;
+    padding: 15px;
   }
-  .bookTitle,
-  .bookAuthors {
-    font-size: 0.8em;
-  }
-  .bookTitle {
-    margin-top: 10px;
-  }
-  .bookAuthors {
-    color: #999;
-  }
-  
+
   .bookTop {
-    position: relative;
-    height: 200px;
-    display: flex;
-    align-items: flex-end;
+    width: 130px;
+    height: 195px;
   }
-  
+
   .bookShelfChanger {
-    position: absolute;
-    right: 0;
-    bottom: -10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgb(48, 48, 152)  ;
-    background-image: url("../../UI/icons/arrow-drop-down.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 20px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 35px;
+    height: 35px;
   }
-  .bookShelfChanger select {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
+
+  .bookTitle {
+    font-size: 0.9rem;
   }
-  
-  /* book cover */
-  
-  .bookCover {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    background: #eee;
+
+  .bookAuthors {
+    font-size: 0.8rem;
   }
-  .bookCoverTitle {
-    padding: 20px 10px 0;
-    text-align: center;
-    font-size: 0.8em;
-  }
+}
+
+.bookCoverTitle {
+  padding: 20px 10px 0;
+  text-align: center;
+  font-size: 0.8em;
+}
+
   

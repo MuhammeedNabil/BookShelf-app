@@ -74,7 +74,6 @@ const Home = () => {
 
         <div className={`${styles.openSearch}`}>
           <Link data-testid="goToSearch" to={"/search"}>
-            Add a book
           </Link>
         </div>
       </div>
